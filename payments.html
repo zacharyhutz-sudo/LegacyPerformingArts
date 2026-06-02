@@ -4,39 +4,48 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Payments | Legacy Performing Arts</title>
+  <meta name="description" content="Legacy Performing Arts payments and registration.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="index.html"><img src="assets/logo-banner.png" alt="Legacy Performing Arts"></a>
+    <a class="brand" href="index.html" aria-label="Legacy Performing Arts home"><img src="assets/logo-transparent-light.png" alt="Legacy Performing Arts"></a>
     <button class="nav-toggle" aria-label="Open navigation">Menu</button>
     <nav class="nav">
       <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="payments.html">Payments</a>
-      <a class="button button-small" href="#payment-options">Pay Tuition</a>
+      <a href="about.html">About Us</a>
+      <a class="active" href="payments.html">Payments</a>
+      <a href="index.html#classes">Classes</a>
+      <a href="index.html#contact">Contact</a>
+      <a class="button button-small" href="#payment-options">Register Now</a>
     </nav>
   </header>
 
   <main>
     <section class="page-hero payments-hero">
-      <p class="eyebrow">Payments</p>
-      <h1>Simple online payments for classes, tuition, and recital fees.</h1>
-      <p>This page is ready for Stripe Payment Links. Replace the placeholder buttons with the live Stripe links when the account is set up.</p>
+      <div class="hero-overlay"></div>
+      <div class="page-hero-copy">
+        <p class="eyebrow">Payments</p>
+        <h1>Simple online payments for classes, tuition, and recital fees.</h1>
+        <p>This page is ready for Stripe Payment Links. Replace the placeholder buttons with live Stripe links when the account is set up.</p>
+      </div>
     </section>
 
     <section id="payment-options" class="payment-grid">
       <article class="payment-card">
+        <p class="eyebrow">Subscription</p>
         <h2>Monthly Tuition</h2>
         <p>Use this for recurring class tuition subscriptions.</p>
         <a class="button" href="https://stripe.com/payments/payment-links" target="_blank" rel="noopener">Replace with Stripe Link</a>
       </article>
       <article class="payment-card featured">
+        <p class="eyebrow">Enrollment</p>
         <h2>Class Registration</h2>
         <p>Use this for one-time registration fees or new student enrollment.</p>
         <a class="button" href="https://stripe.com/payments/payment-links" target="_blank" rel="noopener">Replace with Stripe Link</a>
       </article>
       <article class="payment-card">
+        <p class="eyebrow">Events</p>
         <h2>Recital Fees</h2>
         <p>Use this for costumes, recital packages, tickets, or event fees.</p>
         <a class="button" href="https://stripe.com/payments/payment-links" target="_blank" rel="noopener">Replace with Stripe Link</a>
@@ -50,7 +59,7 @@
   </main>
 
   <footer class="site-footer">
-    <img src="assets/star-mark.png" alt="Legacy star mark">
+    <img src="assets/star-transparent-light.png" alt="Legacy star mark">
     <p>© <span id="year"></span> Legacy Performing Arts. All rights reserved.</p>
   </footer>
   <script src="script.js"></script>
