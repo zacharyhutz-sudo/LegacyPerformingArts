@@ -32,19 +32,19 @@
     </section>
 
     <section id="payment-options" class="payment-grid">
-      <article class="payment-card">
+      <article class="payment-card reveal-up" style="--stagger-index: 0">
         <p class="eyebrow">Subscription</p>
         <h2>Monthly Tuition</h2>
         <p>Use this for recurring class tuition subscriptions.</p>
         <a class="button" href="https://stripe.com/payments/payment-links" target="_blank" rel="noopener">Replace with Stripe Link</a>
       </article>
-      <article class="payment-card featured">
+      <article class="payment-card featured reveal-up" style="--stagger-index: 1">
         <p class="eyebrow">Enrollment</p>
         <h2>Class Registration</h2>
         <p>Use this for one-time registration fees or new student enrollment.</p>
         <a class="button" href="https://stripe.com/payments/payment-links" target="_blank" rel="noopener">Replace with Stripe Link</a>
       </article>
-      <article class="payment-card">
+      <article class="payment-card reveal-up" style="--stagger-index: 2">
         <p class="eyebrow">Events</p>
         <h2>Recital Fees</h2>
         <p>Use this for costumes, recital packages, tickets, or event fees.</p>
@@ -53,8 +53,10 @@
     </section>
 
     <section class="billing-note">
-      <h2>Future billing portal</h2>
-      <p>For families to update cards or view invoices, add a backend later using Cloudflare Pages Functions or Workers. GitHub Pages can host this static site, but it cannot safely create Stripe Customer Portal sessions by itself.</p>
+      <div class="reveal-fade">
+        <h2>Future billing portal</h2>
+        <p>For families to update cards or view invoices, add a backend later using Cloudflare Pages Functions or Workers. GitHub Pages can host this static site, but it cannot safely create Stripe Customer Portal sessions by itself.</p>
+      </div>
     </section>
   </main>
 

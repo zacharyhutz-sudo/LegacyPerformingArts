@@ -25,8 +25,7 @@
     <section class="hero hero-home">
       <div class="hero-overlay"></div>
       <div class="hero-copy">
-        <h1>More Than Dance.<br><span>It’s a Legacy.</span></h1>
-        <div class="gold-rule"></div>
+        <h1></h1>
         <p>At Legacy Performing Arts, students grow in confidence, creativity, discipline, and joy through excellent performing arts training in a welcoming studio community.</p>
         <div class="actions">
           <a class="button" href="index.html#classes">Our Classes</a>
@@ -36,17 +35,17 @@
     </section>
 
     <section class="value-strip" aria-label="Studio values">
-      <article>
+      <article class="reveal-up">
         <div class="icon-card" aria-hidden="true">☆</div>
         <h2>Excellence</h2>
         <p>Top-tier training in a positive, encouraging environment.</p>
       </article>
-      <article>
+      <article class="reveal-up" style="--stagger-index: 1">
         <div class="icon-card" aria-hidden="true">♡</div>
         <h2>Inspiration</h2>
         <p>Creativity, confidence, and a lasting love for the arts.</p>
       </article>
-      <article>
+      <article class="reveal-up" style="--stagger-index: 2">
         <div class="icon-card" aria-hidden="true">◌</div>
         <h2>Community</h2>
         <p>A supportive studio where every dancer belongs.</p>
@@ -54,23 +53,23 @@
     </section>
 
     <section id="classes" class="content-section intro-section">
-      <div>
+      <div class="reveal-up">
         <p class="eyebrow">Classes for every stage</p>
         <h2>Build skills, confidence, and stage presence.</h2>
         <p>Use this section to list class categories such as ballet, jazz, tap, lyrical, musical theatre, preschool dance, private lessons, and recital programs.</p>
       </div>
-      <div class="class-grid">
-        <article>
+      <div class="class-grid reveal-stagger">
+        <article class="reveal-up" style="--stagger-index: 0">
           <span>01</span>
           <h3>Foundations</h3>
           <p>Beginner-friendly classes that introduce rhythm, movement, and confidence.</p>
         </article>
-        <article>
+        <article class="reveal-up" style="--stagger-index: 1">
           <span>02</span>
           <h3>Technique</h3>
           <p>Focused training that helps students strengthen form, discipline, and artistry.</p>
         </article>
-        <article>
+        <article class="reveal-up" style="--stagger-index: 2">
           <span>03</span>
           <h3>Performance</h3>
           <p>Recitals and stage opportunities that celebrate growth and hard work.</p>
@@ -79,8 +78,8 @@
     </section>
 
     <section class="split-section">
-      <img src="https://images.unsplash.com/photo-1508807526345-15e9b5f4eaff?auto=format&fit=crop&w=1200&q=80" alt="Dance students stretching in studio">
-      <div>
+      <img src="https://images.unsplash.com/photo-1508807526345-15e9b5f4eaff?auto=format&fit=crop&w=1200&q=80" alt="Dance students stretching in studio" class="reveal-left">
+      <div class="reveal-right">
         <p class="eyebrow">The Legacy Difference</p>
         <h2>Professional training with a personal studio feel.</h2>
         <p>From first steps to center stage, the goal is to create a studio where students feel known, challenged, and celebrated.</p>
@@ -90,10 +89,12 @@
 
     <section id="contact" class="cta-section">
       <img src="assets/star-transparent-light.png" alt="" aria-hidden="true">
-      <p class="eyebrow">Ready to get started?</p>
-      <h2>Register for classes or make a payment online.</h2>
-      <p>Stripe payment buttons can be added as soon as the studio account is ready.</p>
-      <a class="button" href="payments.html">Go to Payments</a>
+      <div class="reveal-scale">
+        <p class="eyebrow">Ready to get started?</p>
+        <h2>Register for classes or make a payment online.</h2>
+        <p>Stripe payment buttons can be added as soon as the studio account is ready.</p>
+        <a class="button" href="payments.html">Go to Payments</a>
+      </div>
     </section>
   </main>
 

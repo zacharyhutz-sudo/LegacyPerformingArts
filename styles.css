@@ -402,3 +402,107 @@ p { margin: 0 0 18px; }
   .payment-card,
   .billing-note { padding: 26px; }
 }
+
+/* ── Scroll Reveal Animations ── */
+.reveal-fade,
+.reveal-up,
+.reveal-left,
+.reveal-right,
+.reveal-scale {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: opacity, transform;
+}
+.reveal-up { transform: translateY(40px); }
+.reveal-left { transform: translateX(-40px); }
+.reveal-right { transform: translateX(40px); }
+.reveal-scale { transform: scale(0.95); }
+.reveal-fade { transform: none; }
+
+.reveal-fade.visible,
+.reveal-up.visible,
+.reveal-left.visible,
+.reveal-right.visible,
+.reveal-scale.visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
+
+/* Stagger children for card grids */
+.reveal-stagger > * {
+  transition-delay: calc(var(--stagger-index, 0) * 0.12s);
+}
+
+/* Typing cursor blink */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.typing-cursor {
+  display: inline-block;
+  border-right: 2px solid var(--gold);
+  margin-left: 2px;
+  animation: cursor-blink 0.8s ease-in-out infinite;
+}
+
+/* Page load hero animations */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-copy {
+  animation: fade-in-up 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
+}
+.hero-copy h1 {
+  animation: fade-in-up 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
+}
+.hero-copy p {
+  animation: fade-in-up 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.7s both;
+}
+.hero-copy .actions {
+  animation: fade-in-up 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.9s both;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.page-hero-copy {
+  animation: fade-in-up 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
+}
+
+/* Value strip icon bounce */
+@keyframes icon-bounce {
+  0% { transform: translateY(0); }
+  30% { transform: translateY(-8px); }
+  50% { transform: translateY(0); }
+  70% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+.reveal-up.visible .icon-card {
+  animation: icon-bounce 0.8s ease-out;
+}
+
+/* Accessibility: respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-fade, .reveal-up, .reveal-left, .reveal-right, .reveal-scale {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+  .typing-cursor {
+    animation: none;
+  }
+  .hero-copy,
+  .hero-copy h1,
+  .hero-copy p,
+  .hero-copy .actions,
+  .page-hero-copy {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
