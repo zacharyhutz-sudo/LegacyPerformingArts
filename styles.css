@@ -300,12 +300,12 @@ p { margin: 0 0 18px; }
 .about-hero {
   background:
     linear-gradient(90deg, rgba(3, 8, 14, .94) 0%, rgba(6, 15, 28, .78) 50%, rgba(6, 15, 28, .35) 100%),
-    url('https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=1800&q=85') center / cover no-repeat;
+    url('assets/about-hero-desktop.webp') center / cover no-repeat;
 }
 .payments-hero {
   background:
     linear-gradient(90deg, rgba(3, 8, 14, .94) 0%, rgba(6, 15, 28, .78) 50%, rgba(6, 15, 28, .35) 100%),
-    url('https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?auto=format&fit=crop&w=1800&q=85') center / cover no-repeat;
+    url('assets/payments-hero-desktop.webp') center / cover no-repeat;
 }
 
 .payment-grid {
@@ -376,6 +376,18 @@ p { margin: 0 0 18px; }
   .brand img { width: 215px; }
   .site-header { padding-top: 18px; }
   .hero-home { min-height: 680px; padding-top: 150px; background-position: 62% center; }
+  .about-hero {
+    background-image:
+      linear-gradient(90deg, rgba(3, 8, 14, .94) 0%, rgba(6, 15, 28, .78) 50%, rgba(6, 15, 28, .35) 100%),
+      url('assets/about-hero-mobile.webp');
+    background-position: center;
+  }
+  .payments-hero {
+    background-image:
+      linear-gradient(90deg, rgba(3, 8, 14, .94) 0%, rgba(6, 15, 28, .78) 50%, rgba(6, 15, 28, .35) 100%),
+      url('assets/payments-hero-mobile.webp');
+    background-position: center;
+  }
   h1 { font-size: clamp(3rem, 14vw, 5.2rem); }
   .value-strip,
   .content-section,
