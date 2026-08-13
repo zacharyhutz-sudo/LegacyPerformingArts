@@ -518,3 +518,167 @@ p { margin: 0 0 18px; }
     transform: none;
   }
 }
+
+/* ── Payments page ── */
+.payments-shell {
+  padding: clamp(58px, 7vw, 104px) clamp(18px, 6vw, 96px) clamp(70px, 8vw, 120px);
+}
+.payment-intro {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: clamp(24px, 6vw, 90px);
+  align-items: end;
+  max-width: 1180px;
+  margin: 0 auto 34px;
+}
+.payment-intro h2 { margin-bottom: 0; }
+.payment-intro > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+.payment-jump-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 1180px;
+  margin: 0 auto clamp(44px, 6vw, 76px);
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+}
+.payment-jump-links a {
+  padding: 10px 15px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--navy);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  transition: transform .2s ease, border-color .2s ease, background .2s ease;
+}
+.payment-jump-links a:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold);
+  background: #fffdf6;
+}
+.payment-section {
+  max-width: 1180px;
+  margin: 0 auto clamp(68px, 8vw, 112px);
+  scroll-margin-top: 28px;
+}
+.payment-section-heading {
+  display: grid;
+  grid-template-columns: minmax(250px, .8fr) 1fr;
+  column-gap: clamp(28px, 6vw, 80px);
+  align-items: end;
+  margin-bottom: 28px;
+}
+.payment-section-heading .eyebrow { grid-column: 1 / -1; }
+.payment-section-heading h2 { margin: 0; }
+.payment-section-heading > p:last-child {
+  margin: 0 0 5px;
+  color: var(--muted);
+  font-size: 1.03rem;
+}
+.payment-subgroup + .payment-subgroup { margin-top: 38px; }
+.payment-subgroup > h3 {
+  margin-bottom: 14px;
+  font-family: "Rugrat Sans", "Montserrat", "Avenir Next", Arial, sans-serif;
+  color: var(--navy);
+  font-size: .82rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+.payment-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.payment-list-single { grid-template-columns: 1fr; }
+.payment-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  min-height: 118px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--white);
+  box-shadow: 0 12px 34px rgba(17, 42, 75, .06);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.payment-option:hover {
+  transform: translateY(-2px);
+  border-color: rgba(218, 165, 32, .55);
+  box-shadow: 0 18px 42px rgba(17, 42, 75, .1);
+}
+.payment-option.featured {
+  border: 2px solid var(--gold);
+  background: linear-gradient(135deg, #fffdf8, #ffffff);
+}
+.payment-option-copy { min-width: 0; }
+.payment-option-copy h3 {
+  margin: 5px 0 0;
+  font-family: "Rugrat Sans", "Montserrat", "Avenir Next", Arial, sans-serif;
+  font-size: 1.08rem;
+  line-height: 1.25;
+}
+.payment-type {
+  display: block;
+  color: var(--gold);
+  font-size: .7rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.payment-option .button {
+  flex: 0 0 auto;
+  min-width: 148px;
+  margin: 0;
+  padding: 11px 16px;
+  font-size: .72rem;
+  box-shadow: none;
+}
+.payment-option .button.secondary:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+.payment-callout {
+  position: relative;
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 26px;
+  align-items: center;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(28px, 5vw, 48px);
+  overflow: hidden;
+  border-radius: calc(var(--radius) + 4px);
+  background: linear-gradient(135deg, var(--navy), #173a66);
+  color: var(--white);
+}
+.payment-callout img {
+  width: 100px;
+  opacity: .9;
+}
+.payment-callout h2 { color: var(--white); font-size: clamp(2rem, 4vw, 3.4rem); }
+.payment-callout p:last-child { margin-bottom: 0; color: rgba(255,255,255,.75); }
+
+@media (max-width: 900px) {
+  .payment-list { grid-template-columns: 1fr; }
+  .payment-section-heading { grid-template-columns: 1fr; }
+  .payment-section-heading > p:last-child { margin-top: 8px; }
+}
+
+@media (max-width: 680px) {
+  .payment-intro { grid-template-columns: 1fr; }
+  .payment-jump-links { gap: 8px; }
+  .payment-jump-links a { flex: 1 1 calc(50% - 8px); text-align: center; }
+  .payment-option { align-items: stretch; flex-direction: column; min-height: 0; }
+  .payment-option .button { width: 100%; }
+  .payment-callout { grid-template-columns: 1fr; }
+  .payment-callout img { width: 74px; }
+}

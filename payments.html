@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Payments | Legacy Performing Arts</title>
-  <meta name="description" content="Legacy Performing Arts payments and registration.">
+  <meta name="description" content="Pay Legacy Performing Arts registration, monthly tuition, optional class fees, and recital fees securely through Stripe.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,7 +17,7 @@
       <a class="active" href="payments.html">Payments</a>
       <a href="index.html#classes">Classes</a>
       <a href="index.html#contact">Contact</a>
-      <a class="button button-small" href="#payment-options">Register Now</a>
+      <a class="button button-small" href="#payment-options">Make a Payment</a>
     </nav>
   </header>
 
@@ -26,37 +26,170 @@
       <div class="hero-overlay"></div>
       <div class="page-hero-copy">
         <p class="eyebrow">Payments</p>
-        <h1>Simple online payments for classes, tuition, and recital fees.</h1>
-        <p>This page is ready for Stripe Payment Links. Replace the placeholder buttons with live Stripe links when the account is set up.</p>
+        <h1>Everything you need to pay, all in one place.</h1>
+        <p>Choose the option that matches your dancer's class or fee. Each payment opens in a secure Stripe checkout.</p>
       </div>
     </section>
 
-    <section id="payment-options" class="payment-grid">
-      <article class="payment-card reveal-up" style="--stagger-index: 0">
-        <p class="eyebrow">Subscription</p>
-        <h2>Monthly Tuition</h2>
-        <p>Use this for recurring class tuition subscriptions.</p>
-        <a class="button" href="https://stripe.com/payments/payment-links" target="_blank" rel="noopener">Replace with Stripe Link</a>
-      </article>
-      <article class="payment-card featured reveal-up" style="--stagger-index: 1">
-        <p class="eyebrow">Enrollment</p>
-        <h2>Class Registration</h2>
-        <p>Use this for one-time registration fees or new student enrollment.</p>
-        <a class="button" href="https://stripe.com/payments/payment-links" target="_blank" rel="noopener">Replace with Stripe Link</a>
-      </article>
-      <article class="payment-card reveal-up" style="--stagger-index: 2">
-        <p class="eyebrow">Events</p>
-        <h2>Recital Fees</h2>
-        <p>Use this for costumes, recital packages, tickets, or event fees.</p>
-        <a class="button" href="https://stripe.com/payments/payment-links" target="_blank" rel="noopener">Replace with Stripe Link</a>
-      </article>
-    </section>
-
-    <section class="billing-note">
-      <div class="reveal-fade">
-        <h2>Future billing portal</h2>
-        <p>For families to update cards or view invoices, add a backend later using Cloudflare Pages Functions or Workers. GitHub Pages can host this static site, but it cannot safely create Stripe Customer Portal sessions by itself.</p>
+    <section id="payment-options" class="payments-shell">
+      <div class="payment-intro reveal-fade">
+        <div>
+          <p class="eyebrow">Choose a payment</p>
+          <h2>Find your fee below.</h2>
+        </div>
+        <p>If you're unsure which option applies to your dancer, please confirm with Legacy Performing Arts before submitting payment.</p>
       </div>
+
+      <nav class="payment-jump-links reveal-up" aria-label="Payment categories">
+        <a href="#registration">Registration</a>
+        <a href="#monthly-tuition">Monthly Tuition</a>
+        <a href="#optional-classes">Optional Classes</a>
+        <a href="#recital-fees">Recital Fees</a>
+      </nav>
+
+      <section id="registration" class="payment-section reveal-up">
+        <div class="payment-section-heading">
+          <p class="eyebrow">Start here</p>
+          <h2>Registration</h2>
+          <p>One-time student registration fee.</p>
+        </div>
+        <div class="payment-list payment-list-single">
+          <article class="payment-option featured">
+            <div class="payment-option-copy">
+              <span class="payment-type">One-time payment</span>
+              <h3>Registration Fee</h3>
+            </div>
+            <a class="button" href="https://buy.stripe.com/test_5kQ8wP7hA2T84q3gcq3Je05" target="_blank" rel="noopener">Pay Registration</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="monthly-tuition" class="payment-section reveal-up">
+        <div class="payment-section-heading">
+          <p class="eyebrow">Recurring</p>
+          <h2>Monthly Tuition</h2>
+          <p>Select your dancer's primary class or company.</p>
+        </div>
+
+        <div class="payment-subgroup">
+          <h3>Dance Classes</h3>
+          <div class="payment-list">
+            <article class="payment-option">
+              <div class="payment-option-copy"><span class="payment-type">Monthly</span><h3>Pre-Dance A</h3></div>
+              <a class="button secondary" href="https://buy.stripe.com/test_3clcN5dFY0L009N7FU3Je06" target="_blank" rel="noopener">Pay Tuition</a>
+            </article>
+            <article class="payment-option">
+              <div class="payment-option-copy"><span class="payment-type">Monthly</span><h3>Pre-Dance B</h3></div>
+              <a class="button secondary" href="https://buy.stripe.com/test_9B6bJ18IEeBQ3IZ1hw3Je07" target="_blank" rel="noopener">Pay Tuition</a>
+            </article>
+            <article class="payment-option">
+              <div class="payment-option-copy"><span class="payment-type">Monthly</span><h3>Combo A</h3></div>
+              <a class="button secondary" href="https://buy.stripe.com/test_fZu6oH9pl9hw7Cf8JY3Je08" target="_blank" rel="noopener">Pay Tuition</a>
+            </article>
+            <article class="payment-option">
+              <div class="payment-option-copy"><span class="payment-type">Monthly</span><h3>Combo B</h3></div>
+              <a class="button secondary" href="https://buy.stripe.com/test_7sYdR91Xq3Xcq8Lgcq3Je09" target="_blank" rel="noopener">Pay Tuition</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="payment-subgroup">
+          <h3>Company Tuition</h3>
+          <div class="payment-list">
+            <article class="payment-option">
+              <div class="payment-option-copy"><span class="payment-type">Monthly</span><h3>Pre-Company</h3></div>
+              <a class="button secondary" href="https://buy.stripe.com/test_4gM3cv45o9hwbSv1hw3Je0a" target="_blank" rel="noopener">Pay Tuition</a>
+            </article>
+            <article class="payment-option">
+              <div class="payment-option-copy"><span class="payment-type">Monthly</span><h3>Junior Company</h3></div>
+              <a class="button secondary" href="https://buy.stripe.com/test_6oU8wPcBU51qbSve4i3Je0b" target="_blank" rel="noopener">Pay Tuition</a>
+            </article>
+            <article class="payment-option">
+              <div class="payment-option-copy"><span class="payment-type">Monthly</span><h3>Senior Company</h3></div>
+              <a class="button secondary" href="https://buy.stripe.com/test_8x23cv1XqgJY9KnaS63Je0c" target="_blank" rel="noopener">Pay Tuition</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="optional-classes" class="payment-section reveal-up">
+        <div class="payment-section-heading">
+          <p class="eyebrow">Add-ons</p>
+          <h2>Optional Classes</h2>
+          <p>Use these links for additional classes beyond primary tuition.</p>
+        </div>
+
+        <div class="payment-subgroup">
+          <h3>Company Students</h3>
+          <div class="payment-list">
+            <article class="payment-option">
+              <div class="payment-option-copy"><span class="payment-type">Class fee</span><h3>Contemporary — Junior & Senior</h3></div>
+              <a class="button secondary" href="https://buy.stripe.com/test_cNiaEX31kalAe0D7FU3Je0d" target="_blank" rel="noopener">Pay Class Fee</a>
+            </article>
+            <article class="payment-option">
+              <div class="payment-option-copy"><span class="payment-type">Class fee</span><h3>Hip Hop — Senior</h3></div>
+              <a class="button secondary" href="https://buy.stripe.com/test_cNi3cv9plbpE5u74tl3Je0e" target="_blank" rel="noopener">Pay Class Fee</a>
+            </article>
+            <article class="payment-option">
+              <div class="payment-option-copy"><span class="payment-type">Optional class</span><h3>Senior Company 2</h3></div>
+              <a class="button secondary" href="https://buy.stripe.com/test_8x200j9pl0L0e0D6BQ3Je0f" target="_blank" rel="noopener">Pay Class Fee</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="payment-subgroup">
+          <h3>Non-Company Students</h3>
+          <div class="payment-list">
+            <article class="payment-option">
+              <div class="payment-option-copy"><span class="payment-type">Class fee</span><h3>Contemporary</h3></div>
+              <a class="button secondary" href="https://buy.stripe.com/test_00wfZh8IEalA4q38JY3Je0g" target="_blank" rel="noopener">Pay Class Fee</a>
+            </article>
+            <article class="payment-option">
+              <div class="payment-option-copy"><span class="payment-type">Class fee</span><h3>Hip Hop</h3></div>
+              <a class="button secondary" href="https://buy.stripe.com/test_cNi6oHfO679oe0D1hw3Je0h" target="_blank" rel="noopener">Pay Class Fee</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="recital-fees" class="payment-section reveal-up">
+        <div class="payment-section-heading">
+          <p class="eyebrow">One-time</p>
+          <h2>Recital Fees</h2>
+          <p>Select the recital fee that matches your dancer's class or company.</p>
+        </div>
+        <div class="payment-list">
+          <article class="payment-option">
+            <div class="payment-option-copy"><span class="payment-type">One-time</span><h3>Pre-Dance A &amp; B</h3></div>
+            <a class="button secondary" href="https://buy.stripe.com/test_3clcN5dFY79o5u76BQ3Je04" target="_blank" rel="noopener">Pay Recital Fee</a>
+          </article>
+          <article class="payment-option">
+            <div class="payment-option-copy"><span class="payment-type">One-time</span><h3>Combo A &amp; B</h3></div>
+            <a class="button secondary" href="https://buy.stripe.com/test_bJe5kD9pl65kg8Lgcq3Je03" target="_blank" rel="noopener">Pay Recital Fee</a>
+          </article>
+          <article class="payment-option">
+            <div class="payment-option-copy"><span class="payment-type">One-time</span><h3>Pre-Company</h3></div>
+            <a class="button secondary" href="https://buy.stripe.com/test_14A3cv45ofFU1dR9O23Je02" target="_blank" rel="noopener">Pay Recital Fee</a>
+          </article>
+          <article class="payment-option">
+            <div class="payment-option-copy"><span class="payment-type">One-time</span><h3>Junior Company</h3></div>
+            <a class="button secondary" href="https://buy.stripe.com/test_dRm8wPbxQ65k6vbd0e3Je0i" target="_blank" rel="noopener">Pay Recital Fee</a>
+          </article>
+          <article class="payment-option">
+            <div class="payment-option-copy"><span class="payment-type">One-time</span><h3>Senior Company</h3></div>
+            <a class="button secondary" href="https://buy.stripe.com/test_28E7sL45oeBQcWz9O23Je00" target="_blank" rel="noopener">Pay Recital Fee</a>
+          </article>
+        </div>
+      </section>
+
+      <aside class="payment-callout reveal-fade">
+        <img src="assets/star-mark.png" alt="" aria-hidden="true">
+        <div>
+          <p class="eyebrow">Secure checkout</p>
+          <h2>Payments are processed through Stripe.</h2>
+          <p>When you select a payment, you'll be taken to Stripe to complete checkout securely.</p>
+        </div>
+      </aside>
     </section>
   </main>
 
