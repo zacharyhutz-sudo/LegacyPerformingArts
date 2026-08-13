@@ -148,8 +148,8 @@ p { margin: 0 0 18px; }
   align-items: center;
   padding: 180px clamp(22px, 7vw, 130px) 110px;
   background:
-    linear-gradient(90deg, rgba(3, 8, 14, .92) 0%, rgba(6, 15, 28, .76) 36%, rgba(6, 15, 28, .18) 76%),
-    url('https://images.unsplash.com/photo-1518834107812-67b0b7c58434?auto=format&fit=crop&w=1800&q=85') center right / cover no-repeat;
+    linear-gradient(90deg, rgba(0, 0, 0, .9) 0%, rgba(0, 0, 0, .72) 42%, rgba(0, 0, 0, .18) 76%),
+    url('assets/home-hero-desktop.webp') center right / cover no-repeat;
 }
 .hero-copy {
   position: relative;
@@ -375,7 +375,14 @@ p { margin: 0 0 18px; }
 @media (max-width: 860px) {
   .brand img { width: 215px; }
   .site-header { padding-top: 18px; }
-  .hero-home { min-height: 680px; padding-top: 150px; background-position: 62% center; }
+  .hero-home {
+    min-height: 700px;
+    padding-top: 150px;
+    background-image:
+      linear-gradient(90deg, rgba(0, 0, 0, .92) 0%, rgba(0, 0, 0, .72) 44%, rgba(0, 0, 0, .2) 82%),
+      url('assets/home-hero-mobile.webp');
+    background-position: 72% center;
+  }
   .about-hero {
     background-image:
       linear-gradient(90deg, rgba(3, 8, 14, .94) 0%, rgba(6, 15, 28, .78) 50%, rgba(6, 15, 28, .35) 100%),
