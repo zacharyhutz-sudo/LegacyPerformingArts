@@ -119,3 +119,19 @@ if (year) year.textContent = new Date().getFullYear();
     }
   }, { passive: true });
 })();
+
+/* ── Contact form placeholder (swap to Formspark when endpoint is ready) ── */
+(function() {
+  const form = document.querySelector('#contact-form[data-placeholder="true"]');
+  if (!form) return;
+  const status = document.querySelector('#form-status');
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    if (status) {
+      status.textContent = 'This form is ready for the Formspark endpoint. For now, please email or text the studio so your inquiry is delivered.';
+      status.classList.add('confirmed');
+    }
+  });
+})();
