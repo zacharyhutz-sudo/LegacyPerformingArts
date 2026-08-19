@@ -35,68 +35,75 @@ if (year) year.textContent = new Date().getFullYear();
 
 /* ── Hero Typing Animation ── */
 (function() {
-  const h1 = document.querySelector('.hero-copy h1');
+  const h1 = document.querySelector('.hero-home .hero-copy h1');
   if (!h1) return;
 
   const mainText = "More Than Dance.";
   const accentText = "It's a Legacy.";
 
-  // Build the headline elements
+  // A hidden full headline stays in normal document flow. This reserves the
+  // final headline height from the first frame, so the copy below never jumps.
+  const sizer = document.createElement('span');
+  sizer.className = 'typing-sizer';
+  sizer.setAttribute('aria-hidden', 'true');
+  sizer.append(document.createTextNode(mainText), document.createElement('br'));
+  const sizerAccent = document.createElement('span');
+  sizerAccent.textContent = accentText;
+  sizer.appendChild(sizerAccent);
+
+  // The animated headline sits on top of the sizer and does not affect layout.
+  const live = document.createElement('span');
+  live.className = 'typing-live';
+  live.setAttribute('aria-hidden', 'true');
+
   const textSpan = document.createElement('span');
   textSpan.id = 'typing-main';
-  textSpan.textContent = '';
-
-  const lineBreak = document.createElement('br');
 
   const accentSpan = document.createElement('span');
   accentSpan.id = 'typing-accent';
-  accentSpan.textContent = '';
 
   const cursorSpan = document.createElement('span');
   cursorSpan.id = 'typing-cursor';
   cursorSpan.className = 'typing-cursor';
-  cursorSpan.textContent = '';
 
-  // Clear existing headline content and rebuild
-  h1.innerHTML = '';
-  h1.appendChild(textSpan);
-  h1.appendChild(lineBreak);
-  h1.appendChild(accentSpan);
-  h1.appendChild(cursorSpan);
+  live.append(textSpan, document.createElement('br'), accentSpan, cursorSpan);
+  h1.replaceChildren(sizer, live);
 
-  // Start typing on load
+  // Keep the complete headline available to assistive technology.
+  h1.setAttribute('aria-label', `${mainText} ${accentText}`);
+
   setTimeout(() => {
     let i = 0;
-    let j = 0;
 
     const typeMain = () => {
       if (i < mainText.length) {
         textSpan.textContent += mainText.charAt(i);
         i++;
         setTimeout(typeMain, 55);
-      } else {
-        // Start accent line after brief pause
-        setTimeout(() => {
-          let k = 0;
-          const typeAccent = () => {
-            if (k < accentText.length) {
-              accentSpan.textContent += accentText.charAt(k);
-              k++;
-              setTimeout(typeAccent, 50);
-            } else {
-              // Hide cursor after typing complete
-              setTimeout(() => {
-                cursorSpan.style.opacity = '0';
-                cursorSpan.style.transition = 'opacity 0.4s ease';
-              }, 600);
-            }
-          };
-          typeAccent();
-        }, 300);
+        return;
       }
+
+      setTimeout(() => {
+        let k = 0;
+        const typeAccent = () => {
+          if (k < accentText.length) {
+            accentSpan.textContent += accentText.charAt(k);
+            k++;
+            setTimeout(typeAccent, 50);
+            return;
+          }
+
+          setTimeout(() => {
+            cursorSpan.style.opacity = '0';
+            cursorSpan.style.transition = 'opacity 0.4s ease';
+          }, 600);
+        };
+        typeAccent();
+      }, 300);
     };
+
     typeMain();
-  }, 900); // Delay so page load + fade-in has started first
+  }, 900);
 })();
 
 /* ── Split Section Image Parallax (subtle) ── */

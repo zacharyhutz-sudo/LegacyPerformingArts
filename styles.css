@@ -162,6 +162,22 @@ p { margin: 0 0 18px; }
   text-shadow: 0 16px 38px rgba(0, 0, 0, .3);
 }
 .hero-copy h1 span { color: var(--ice); }
+
+/* Keep the home hero headline at its final height while the typing animation runs. */
+.hero-home .hero-copy h1 {
+  position: relative;
+}
+.hero-home .typing-sizer {
+  display: block;
+  visibility: hidden;
+  pointer-events: none;
+}
+.hero-home .typing-live {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+}
 .hero-copy p,
 .page-hero p {
   max-width: 620px;
