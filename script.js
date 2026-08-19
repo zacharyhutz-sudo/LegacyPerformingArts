@@ -18,6 +18,11 @@ if (year) year.textContent = new Date().getFullYear();
   const reveals = document.querySelectorAll('.reveal-fade, .reveal-up, .reveal-left, .reveal-right, .reveal-scale');
   if (!reveals.length) return;
 
+  if (!('IntersectionObserver' in window)) {
+    reveals.forEach((el) => el.classList.add('visible'));
+    return;
+  }
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -38,72 +43,105 @@ if (year) year.textContent = new Date().getFullYear();
   const h1 = document.querySelector('.hero-home .hero-copy h1');
   if (!h1) return;
 
-  const mainText = "More Than Dance.";
-  const accentText = "It's a Legacy.";
+  const mobileQuery = window.matchMedia('(max-width: 520px)');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // A hidden full headline stays in normal document flow. This reserves the
-  // final headline height from the first frame, so the copy below never jumps.
+  const desktopLines = [
+    { text: 'More Than', accent: false },
+    { text: 'Dance.', accent: false },
+    { text: "It's a Legacy.", accent: true }
+  ];
+  const mobileLines = [
+    { text: 'More Than', accent: false },
+    { text: 'Dance.', accent: false },
+    { text: "It's a", accent: true },
+    { text: 'Legacy.', accent: true }
+  ];
+
+  const linesForViewport = () => mobileQuery.matches ? mobileLines : desktopLines;
+
+  const renderStatic = () => {
+    const fragment = document.createDocumentFragment();
+    linesForViewport().forEach(({ text, accent }) => {
+      const line = document.createElement('span');
+      line.className = `hero-title-line${accent ? ' hero-title-accent' : ''}`;
+      line.textContent = text;
+      fragment.appendChild(line);
+    });
+    h1.replaceChildren(fragment);
+  };
+
+  if (reduceMotion) {
+    renderStatic();
+    return;
+  }
+
+  const lines = linesForViewport();
   const sizer = document.createElement('span');
   sizer.className = 'typing-sizer';
   sizer.setAttribute('aria-hidden', 'true');
-  sizer.append(document.createTextNode(mainText), document.createElement('br'));
-  const sizerAccent = document.createElement('span');
-  sizerAccent.textContent = accentText;
-  sizer.appendChild(sizerAccent);
 
-  // The animated headline sits on top of the sizer and does not affect layout.
   const live = document.createElement('span');
   live.className = 'typing-live';
   live.setAttribute('aria-hidden', 'true');
 
-  const textSpan = document.createElement('span');
-  textSpan.id = 'typing-main';
+  const liveLines = [];
+  lines.forEach(({ text, accent }) => {
+    const sizeLine = document.createElement('span');
+    sizeLine.className = `typing-line${accent ? ' typing-accent' : ''}`;
+    sizeLine.textContent = text;
+    sizer.appendChild(sizeLine);
 
-  const accentSpan = document.createElement('span');
-  accentSpan.id = 'typing-accent';
+    const liveLine = document.createElement('span');
+    liveLine.className = `typing-line${accent ? ' typing-accent' : ''}`;
+    live.appendChild(liveLine);
+    liveLines.push(liveLine);
+  });
 
-  const cursorSpan = document.createElement('span');
-  cursorSpan.id = 'typing-cursor';
-  cursorSpan.className = 'typing-cursor';
+  const cursor = document.createElement('span');
+  cursor.className = 'typing-cursor';
+  cursor.setAttribute('aria-hidden', 'true');
 
-  live.append(textSpan, document.createElement('br'), accentSpan, cursorSpan);
   h1.replaceChildren(sizer, live);
+  h1.setAttribute('aria-label', "More Than Dance. It's a Legacy.");
 
-  // Keep the complete headline available to assistive technology.
-  h1.setAttribute('aria-label', `${mainText} ${accentText}`);
+  let lineIndex = 0;
+  let charIndex = 0;
 
-  setTimeout(() => {
-    let i = 0;
-
-    const typeMain = () => {
-      if (i < mainText.length) {
-        textSpan.textContent += mainText.charAt(i);
-        i++;
-        setTimeout(typeMain, 55);
-        return;
-      }
-
+  const typeNext = () => {
+    if (lineIndex >= lines.length) {
       setTimeout(() => {
-        let k = 0;
-        const typeAccent = () => {
-          if (k < accentText.length) {
-            accentSpan.textContent += accentText.charAt(k);
-            k++;
-            setTimeout(typeAccent, 50);
-            return;
-          }
+        cursor.style.opacity = '0';
+        cursor.style.transition = 'opacity 0.4s ease';
+      }, 600);
+      return;
+    }
 
-          setTimeout(() => {
-            cursorSpan.style.opacity = '0';
-            cursorSpan.style.transition = 'opacity 0.4s ease';
-          }, 600);
-        };
-        typeAccent();
-      }, 300);
-    };
+    const currentLine = liveLines[lineIndex];
+    currentLine.appendChild(cursor);
+    const currentText = lines[lineIndex].text;
 
-    typeMain();
-  }, 900);
+    if (charIndex < currentText.length) {
+      currentLine.insertBefore(document.createTextNode(currentText.charAt(charIndex)), cursor);
+      charIndex += 1;
+      setTimeout(typeNext, lineIndex < 2 ? 55 : 50);
+      return;
+    }
+
+    lineIndex += 1;
+    charIndex = 0;
+    setTimeout(typeNext, 180);
+  };
+
+  setTimeout(typeNext, 900);
+
+  // Keep the correct line layout if a phone rotates or crosses the breakpoint.
+  const handleBreakpointChange = () => renderStatic();
+  if (typeof mobileQuery.addEventListener === 'function') {
+    mobileQuery.addEventListener('change', handleBreakpointChange);
+  } else if (typeof mobileQuery.addListener === 'function') {
+    mobileQuery.addListener(handleBreakpointChange);
+  }
 })();
 
 /* ── Split Section Image Parallax (subtle) ── */
@@ -135,6 +173,7 @@ if (year) year.textContent = new Date().getFullYear();
 (function() {
   const form = document.querySelector('#contact-form');
   if (!form || !form.action.includes('submit-form.com')) return;
+  if (!('fetch' in window) || !('FormData' in window)) return;
 
   const status = document.querySelector('#form-status');
   const submitButton = form.querySelector('button[type="submit"]');
@@ -153,7 +192,10 @@ if (year) year.textContent = new Date().getFullYear();
       submitButton.textContent = 'Sending…';
     }
 
-    const data = Object.fromEntries(new FormData(form).entries());
+    const data = {};
+    new FormData(form).forEach((value, key) => {
+      data[key] = value;
+    });
     data._email = {
       subject: 'New Legacy Performing Arts website inquiry'
     };
