@@ -2,7 +2,11 @@
 const toggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.nav');
 if (toggle && nav) {
-  toggle.addEventListener('click', () => nav.classList.toggle('open'));
+  toggle.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+  });
 }
 
 /* ── Dynamic Copyright Year ── */
