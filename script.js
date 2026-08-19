@@ -120,18 +120,61 @@ if (year) year.textContent = new Date().getFullYear();
   }, { passive: true });
 })();
 
-/* ── Contact form placeholder (swap to Formspark when endpoint is ready) ── */
+/* ── Contact Form / Formspark ── */
 (function() {
-  const form = document.querySelector('#contact-form[data-placeholder="true"]');
-  if (!form) return;
-  const status = document.querySelector('#form-status');
+  const form = document.querySelector('#contact-form');
+  if (!form || !form.action.includes('submit-form.com')) return;
 
-  form.addEventListener('submit', (event) => {
+  const status = document.querySelector('#form-status');
+  const submitButton = form.querySelector('button[type="submit"]');
+  const defaultButtonText = submitButton ? submitButton.textContent : 'Send Inquiry';
+
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!form.reportValidity()) return;
+
     if (status) {
-      status.textContent = 'This form is ready for the Formspark endpoint. For now, please email or text the studio so your inquiry is delivered.';
-      status.classList.add('confirmed');
+      status.textContent = '';
+      status.classList.remove('confirmed', 'error');
+    }
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending…';
+    }
+
+    const data = Object.fromEntries(new FormData(form).entries());
+    data._email = {
+      subject: 'New Legacy Performing Arts website inquiry'
+    };
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (!response.ok) throw new Error(`Formspark returned ${response.status}`);
+
+      form.reset();
+      if (status) {
+        status.textContent = 'Thank you! Your message has been sent to Legacy Performing Arts.';
+        status.classList.add('confirmed');
+      }
+    } catch (error) {
+      console.error('Contact form submission failed:', error);
+      if (status) {
+        status.textContent = 'We couldn’t send your message. Please try again, or email/text the studio directly.';
+        status.classList.add('error');
+      }
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = defaultButtonText;
+      }
     }
   });
 })();

@@ -10,7 +10,7 @@
   <link rel="shortcut icon" href="favicon.ico?v=20260819">
   <title>Contact | Legacy Performing Arts</title>
   <meta name="description" content="Contact Legacy Performing Arts with questions about classes, placement, registration, schedules, and private lessons.">
-  <link rel="stylesheet" href="styles.css?v=20260819-pages">
+  <link rel="stylesheet" href="styles.css?v=20260819-form-photo-audit">
 </head>
 <body>
   <header class="site-header">
@@ -66,8 +66,8 @@
       <div class="contact-form-card reveal-right">
         <p class="eyebrow">Send an inquiry</p>
         <h2>How can we help?</h2>
-        <form class="contact-form" id="contact-form" data-placeholder="true">
-          <!-- Add the Formspark action URL to this form when the endpoint is ready. -->
+        <form class="contact-form" id="contact-form" action="https://submit-form.com/fGztixinR" method="POST">
+          <input type="checkbox" name="_honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
           <div class="form-row">
             <label for="name">Name <span aria-hidden="true">*</span></label>
             <input id="name" name="name" type="text" autocomplete="name" required placeholder="Your name">
@@ -87,7 +87,7 @@
             <textarea id="inquiry" name="inquiry" rows="7" required placeholder="Tell us about your dancer, the class you’re interested in, or your question."></textarea>
           </div>
           <button class="button" type="submit">Send Inquiry</button>
-          <p class="form-status" id="form-status" role="status" aria-live="polite">Online form delivery will be connected to Formspark next. Until then, please email or text the studio directly.</p>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
@@ -109,6 +109,6 @@
     <img src="assets/star-transparent-light.png" alt="Legacy star mark">
     <p>© <span id="year"></span> Legacy Performing Arts. All rights reserved.</p>
   </footer>
-  <script src="script.js"></script>
+  <script src="script.js?v=20260819-form-photo-audit"></script>
 </body>
 </html>
